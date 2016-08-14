@@ -38,6 +38,9 @@ public class NeutronPort implements Port {
 	@JsonProperty("admin_state_up")
 	private boolean adminStateUp = true;
 
+	@JsonProperty("port_security_enabled")
+	private boolean portSecurityEnabled;
+	
 	@JsonProperty("device_id")
 	private String deviceId;
 
@@ -206,7 +209,7 @@ public class NeutronPort implements Port {
 				    .add("id", id).add("name", name).add("adminStateUp", adminStateUp).add("deviceId", deviceId)
 				    .add("deviceOwner", deviceOwner).add("fixedIps", fixedIps).add("macAddress", macAddress)
 				    .add("networkId", networkId).add("tenantId", tenantId).add("securityGroups", securityGroups)
-				    .add("allowed_address_pairs", allowedAddressPairs)
+				    .add("allowed_address_pairs", allowedAddressPairs).add("portSecutiryEnabled", portSecurityEnabled)
 				    .toString();
 	}
 	
@@ -355,6 +358,12 @@ public class NeutronPort implements Port {
 				m.securityGroups = new ArrayList<String>();
 			}
 			m.securityGroups.add(groupName);
+			return this;
+		}
+
+		@Override
+		public PortBuilder portSecurityEnabled(boolean portSecurityEnabled) {
+			m.portSecurityEnabled = portSecurityEnabled;
 			return this;
 		}
 	}

@@ -93,6 +93,9 @@ public interface PortBuilder extends Builder<PortBuilder, Port> {
 	 */
 	PortBuilder adminState(boolean adminStateUp);
 	
+	
+	PortBuilder portSecurityEnabled(boolean portSecurityEnabled);
+	
 	/**
 	 * @see Port#getState()
 	 */
